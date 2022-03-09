@@ -367,7 +367,7 @@ html, body{ height: 100%; }
 }
 
 .fixed-menu .navbar-brand>img {
-    max-width: 150px;
+    max-width: 200px;
 }
 
 .fixed-menu .main-menu nav li a{
@@ -800,6 +800,9 @@ html, body{ height: 100%; }
 }
 .tab-title-menu {
 	text-align:center;
+}
+.tab-title-menu:hover{
+    color: grey;
 }
 
 .tab-title-menu h2{
@@ -1879,3 +1882,38 @@ textarea:focus, input:focus, select:focus, .bootstrap-select .dropdown-toggle:fo
 .vivid-yellow-bg{
 	background: #fdcb03;
 }
+.reservations-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+textarea{
+    width: 100%;
+    border: 2px dotted #ccc;
+    color: #202020;
+    background: #f5f5f5;
+    outline-color: #e75b1e;
+    padding-bottom: 70px;
+}
+textarea:focus{
+    border: 2px dotted #e75b1e;
+}
+input[type=text]:focus{
+    border: 2px dotted #e75b1e;
+}
+input[type=email]:focus{
+    border: 2px dotted #e75b1e;
+}
+.send {
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    color: #fff;
+    background-color: #3abe3a;
+    border-radius: 18px;
+    width: 48%;
+    text-align: center;
+    margin-bottom: 10px;
+  }

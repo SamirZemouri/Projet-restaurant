@@ -7,6 +7,42 @@
     Version: 1.0
 /****************************************** */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (function($) {
     "use strict";
 	
@@ -269,41 +305,111 @@
 		$('.parallax').parallax({
 			speed : 0.15
 		});
-		
-		 /* ==============================================
-			CONTACT FORM
+	
+
+				 /* ==============================================
+			FORMULAIRE DE CONTACT
 		=============================================== */	
-			 jQuery(document).ready(function() {
-				$('#contact-form').submit(function() {
-					var action = $(this).attr('action');
-					$("#message").slideUp(750, function() {
-						$('#message').hide();
-						$('#submit')
-							.after('<img src="images/ajax-loader.gif" class="loader" />')
-							.attr('disabled', 'disabled');
-						$.post(action, {
-								first_name: $('#first_name').val(),
-								email: $('#email').val(),
-								phone: $('#phone').val(),
-								no_of_persons: $('#no_of_persons').val(),
-								preferred_food: $('#preferred_food').val(),
-								occasion: $('#occasion').val(),
-								verify: $('#verify').val()
-							},
-							function(data) {
-								document.getElementById('message').innerHTML = data;
-								$('#message').slideDown('slow');
-								$('#contact-form img.loader').fadeOut('slow', function() {
-									$(this).remove()
-								});
-								$('#submit').removeAttr('disabled');
-								if (data.match('success') != null) $('#contact-form').slideUp('slow');
-							}
-						);
-					});
-					return false;
-				});
-			});
+		let form = document.querySelector('form')
+		let inputNom = document.querySelector('.nom')
+		let inputMail = document.querySelector('.mail')
+		let regleNom = /^[a-zA-ZÃ¡Ã Ã¢Ã¤Ã£Ã¥Ã§Ã©Ã¨ÃªÃ«Ã­Ã¬Ã®Ã¯Ã±Ã³Ã²Ã´Ã¶ÃµÃºÃ¹Ã»Ã¼Ã½Ã¿Ã¦Å“ÃÃ€Ã‚Ã„ÃƒÃ…Ã‡Ã‰ÃˆÃŠÃ‹ÃÃŒÃŽÃÃ‘Ã“Ã’Ã”Ã–Ã•ÃšÃ™Ã›ÃœÃÅ¸Ã†Å’'-]+$/;
+		let regleMail =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+		let button = document.getElementById("subbtn")
+		
+		
+		form.addEventListener('submit', function(e){
+			e.preventDefault()
+			let resultatNom = regleNom.test(inputNom.value)
+			let resultatMail = regleMail.test(inputMail.value)
+		
+		
+			let formData = new FormData(form)
+			let url = './formulaire.php';
+			fetch(url,{
+				method: 'POST',
+				body: formData
+			})
+			.then((response) => {
+				return response.json()
+			})
+			.then((data) => {
+				console.log(data);
+		
+				document.querySelector('.send').innerHTML=data.validation
+				return form.reset()
+				
+			})
+		})
+})(jQuery);	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		 
 	
-})(jQuery);
+		//  /* ==============================================
+		// 	FORMULAIRE DE CONTACT
+		// =============================================== */	
+		// let form = document.querySelector('form')
+		// let inputNom = document.querySelector('#nom')
+		// let inputMail = document.querySelector('#mail')
+		// let regleNom = /^[a-zA-ZÃ¡Ã Ã¢Ã¤Ã£Ã¥Ã§Ã©Ã¨ÃªÃ«Ã­Ã¬Ã®Ã¯Ã±Ã³Ã²Ã´Ã¶ÃµÃºÃ¹Ã»Ã¼Ã½Ã¿Ã¦Å“ÃÃ€Ã‚Ã„ÃƒÃ…Ã‡Ã‰ÃˆÃŠÃ‹ÃÃŒÃŽÃÃ‘Ã“Ã’Ã”Ã–Ã•ÃšÃ™Ã›ÃœÃÅ¸Ã†Å’'-]+$/;
+		// let regleMail =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+		// let resultatNom = regleNom.test(inputNom.value)
+		// let resultatMail = regleMail.test(inputMail.value)
+		// let button = document.getElementById("subbtn")
+		
+		
+		// form.addEventListener('submit', function(e){
+		// 	e.preventDefault()
+		// 	let resultatNom = regleNom.test(inputNom.value)
+		// 	let resultatMail = regleMail.test(inputMail.value)
+		
+		
+		// 	let formData = new FormData(form)
+		// 	let url = './formulaire.php';
+		// 	fetch(url,{
+		// 		method: 'POST',
+		// 		body: formData
+		// 	})
+		// 	.then((response) => {
+		// 		return response.json()
+		// 	})
+		// 	.then((data) => {
+		// 		console.log(data);
+		
+		// 		document.querySelector('.send').innerHTML=data.validation
+		// 		return form.reset()
+				
+		// 	})
+		// })
