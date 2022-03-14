@@ -1,3 +1,27 @@
+<?php
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+$host = 'localhost';
+$dbname = 'Menu_Restaurant';
+$username = 'phpmyadmin';
+$password ='Kazuya529892';
+
+try {
+$entree = "SELECT Menu.Nom, Prix, Description, Menu.Image FROM Category INNER JOIN Menu WHERE Menu.Category_idCategory = Category.idCategory AND Menu.Category_idCategory = 1";
+$plat = "SELECT Menu.Nom, Prix, Description, Menu.Image FROM Category INNER JOIN Menu WHERE Menu.Category_idCategory = Category.idCategory AND Menu.Category_idCategory = 2";
+$dessert = "SELECT Menu.Nom, Prix, Description, Menu.Image FROM Category INNER JOIN Menu WHERE Menu.Category_idCategory = Category.idCategory AND Menu.Category_idCategory = 3";
+$boisson = "SELECT Menu.Nom, Prix, Description, Menu.Image FROM Category INNER JOIN Menu WHERE Menu.Category_idCategory = Category.idCategory AND Menu.Category_idCategory = 4";
+
+
+
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -22,7 +46,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    
 
     <!-- Site CSS -->
     <link rel="stylesheet" href="./css/style.css">
@@ -152,7 +175,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <h2 class="block-title color-white text-center"> Today's Special </h2>
+                        <h2 class="block-title color-white text-center text"> Today's Special </h2>
                         <h5 class="title-caption text-center"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia,nostrud exercitation ullamco. </h5>
                     </div>
                     <div class="special-box">
@@ -268,170 +291,99 @@
                                 <p> <i class="flaticon-coffee"></i> </p>
                             </div>
                         </div>
-                        <!-- copie/colle ici -->
+                        <!-- Copie/colle à partir d'ici -->
                         <div class="slider slider-single">
                             <div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-01.jpg" alt="" class="img-responsive">
+                            <?php 
+                                    $stmt = $conn->query($entree);
+                                    while ($row = $stmt->fetch()) { 
+                                    echo "<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 '>
+                                    
+                                    <div class='offer-item'>
+                                        
+                                        <img src='images/menu-item-thumbnail-01.jpg' alt='' class='img-responsive'>
+                                        
                                         <div>
-                                            <h3>GARLIC BREAD</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                            
+                                            <h3>". $row['Nom']."</h3>
+                                            <p>".
+                                                  $row['Description']."
                                             </p>
                                         </div>
-                                        <span class="offer-price">$8.5</span>
+                                        <span class='offer-price'>".  $row['Prix']." €</span>
+                                   
                                     </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-02.jpg" alt="" class="img-responsive">
+                                </div>";
+                                    }?>
+                            </div>
+                            <div>
+                            <?php 
+                                    $stmt = $conn->query($plat);
+                                    while ($row = $stmt->fetch()) { 
+                                    echo "<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 '>
+                                    
+                                    <div class='offer-item'>
+                                        
+                                        <img src='images/menu-item-thumbnail-01.jpg' alt='' class='img-responsive'>
+                                        
                                         <div>
-                                            <h3>MIXED SALAD</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                            
+                                            <h3>". $row['Nom']."</h3>
+                                            <p>".
+                                                  $row['Description']."
                                             </p>
                                         </div>
-                                        <span class="offer-price">$25</span>
+                                        <span class='offer-price'>".  $row['Prix']." €</span>
+                                   
                                     </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-03.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>BBQ CHICKEN WINGS</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$10</span>
-                                    </div>
-                                </div>
+                                </div>";
+                                    }?>
                                 <!-- end col -->
                             </div>
                             <div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-04.jpg" alt="" class="img-responsive">
+                            <?php 
+                                    $stmt = $conn->query($dessert);
+                                    while ($row = $stmt->fetch()) { 
+                                    echo "<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 '>
+                                    
+                                    <div class='offer-item'>
+                                        
+                                        <img src='images/menu-item-thumbnail-01.jpg' alt='' class='img-responsive'>
+                                        
                                         <div>
-                                            <h3>MEAT FEAST PIZZA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                            
+                                            <h3>". $row['Nom']."</h3>
+                                            <p>".
+                                                  $row['Description']."
                                             </p>
                                         </div>
-                                        <span class="offer-price">$5</span>
+                                        <span class='offer-price'>".  $row['Prix']." €</span>
+                                   
                                     </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-05.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$15</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-06.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>SPICY MEATBALLS</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$6.5</span>
-                                    </div>
-                                </div>
+                                </div>";
+                                    }?>
                                 <!-- end col -->
                             </div>
                             <div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                            <?php 
+                                    $stmt = $conn->query($boisson);
+                                    while ($row = $stmt->fetch()) { 
+                                    echo "<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 '>
+                                    
+                                    <div class='offer-item'>
+                                        
+                                        <img src='images/menu-item-thumbnail-01.jpg' alt='' class='img-responsive'>
+                                        
                                         <div>
-                                            <h3>CHOCOLATE FUDGECAKE</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
+                                            
+                                            <h3>". $row['Nom']."</h3>
+                                            <p>".$row['Description']."</p>
                                         </div>
-                                        <span class="offer-price">$4.5</span>
+                                        <span class='offer-price'>".  $row['Prix']." €</span>
+                                   
                                     </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-08.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$9.5</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-09.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$10</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                            </div>
-                            <div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-10.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>MEAT FEAST PIZZA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$12.5</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-09.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$9.5</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-08.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$5.5</span>
-                                    </div>
-                                </div>
+                                </div>";
+                                    }?>
                                 <!-- end col -->
                             </div>
                         </div>
@@ -445,6 +397,8 @@
         <!-- end container -->
     </div>
     <!-- end menu -->
+    <!-- end menu -->
+    <!-- copie/colle à partir d'ici -->
 
     <div id="our_team" class="team-main pad-top-100 pad-bottom-100 parallax">
         <div class="container">
@@ -946,3 +900,11 @@
 </body>
 
 </html>
+<?php
+    if($stmt === false){
+        die("Erreur"); 
+    }
+}catch (PDOException $e) {
+    die("Impossible de se connecter à la base de données $dbname :" . $e->getMessage());
+}
+?>
