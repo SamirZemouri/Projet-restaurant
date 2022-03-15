@@ -97,10 +97,11 @@ $boisson = "SELECT Menu.Nom, Prix, Description, Menu.Image FROM Category INNER J
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="active"><a href="index.php">Accueil</a></li>
-                                    <li><a href="#entrées">ENTRÉES</a></li>
-                                    <li><a href="back-office-plats.php">PLATS</a></li>
-                                    <li><a href="back-office-desserts.php">DESSERTS</a></li>
-                                    <li><a href="back-office-boissons.php">BOISSONS</a></li>
+                                    <li><a id="entrees"href="#entrées">ENTRÉES</a></li>
+                                    <!-- <li><a id="plats" href="back-office-plats.php">PLATS</a></li> -->
+                                    <li><a id="plats">PLATS</a></li>
+                                    <li><a id="desserts"href="back-office-desserts.php">DESSERTS</a></li>
+                                    <li><a id="boissons"href="back-office-boissons.php">BOISSONS</a></li>
                                 </ul>
                             </div>
                             <!-- end nav-collapse -->
@@ -165,7 +166,7 @@ $boisson = "SELECT Menu.Nom, Prix, Description, Menu.Image FROM Category INNER J
                         <img src='images/menu-item-thumbnail-01.jpg' alt='' class='img-responsive'>
                     </div>
                     <div class='titre-menu'>
-                        <h3 class=''>". $row['Nom'] ."</h3>
+                        <h3 id='menu-nom'>". $row['Nom'] ."</h3>
                     </div>
                     <div class='description-menu'>
                         <p>". $row['Description']."</p>
@@ -191,8 +192,8 @@ $boisson = "SELECT Menu.Nom, Prix, Description, Menu.Image FROM Category INNER J
     <script src="js/all.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
-    <script src="js/custom.js"></script>
-    <script src="js/navigation.js"></script>
+    <script src="js/custom-back-office.js"></script>
+    <script src="js/Navigation.js"></script>
 </body>
 
 </html>
