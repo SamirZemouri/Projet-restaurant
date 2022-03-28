@@ -46,7 +46,7 @@ Lien du site :
 ## Licence :copyright:
 AU PERA PALACE par ***Dereje GETU TADESSE*** & ***Samir ZEMOURI*** **&copy;** 2022
 
-Licencié sous [MIT License](LICENCE).
+Licencié sous [MIT License](LICENCE.md).
 
 
 
