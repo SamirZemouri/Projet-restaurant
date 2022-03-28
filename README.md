@@ -11,8 +11,8 @@ Le projet consiste à créer un site web pour un restaurant. Le site doit être 
 
 Ce projet a été réalisé dans le cadre d'une formation de développeur web, nous devions travailler en équipe et nous répartir les différentes tâches à faire.
 
-Début du projet ***09/03/2022***
-Date de fin du projet ***23/03/2022***
+Début du projet : ***09/03/2022***
+Date de fin du projet : ***23/03/2022***
 
 
 ## FONCTIONNALITÉS :bulb:
